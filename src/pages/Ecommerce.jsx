@@ -2,9 +2,36 @@ import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import { Stacked, Pie, Button, SparkLine } from "../components";
-import { earningData, SparklineAreaData, EcomPieChartData } from "../data/dummy";
+import {
+  earningData,
+  medicalproBranding,
+  recentTransactions,
+  weeklyStats,
+  dropdownData,
+  SparklineAreaData,
+  ecomPieChartData,
+} from "../data/dummy";
+
+import { useStateContext } from "../contexts/ContextProvider";
+import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+
+const DropDown = ({ currentMode }) => (
+  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+    <DropDownListComponent
+      id="time"
+      fields={{ text: "Time", value: "Id" }}
+      style={{ border: "none", color: currentMode === "Dark" && "white" }}
+      value="1"
+      dataSource={dropdownData}
+      popupHeight="220px"
+      popupWidth="120px"
+    />
+  </div>
+);
 
 const Ecommerce = () => {
+  const { currentColor, currentMode } = useStateContext();
+
   return (
     <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center">
@@ -14,16 +41,25 @@ const Ecommerce = () => {
               <p className="font-bold text-gray-400">Earnings</p>
               <p className="text-2xl">$53,512.22</p>
             </div>
+            <button
+              type="button"
+              style={{ backgroundColor: currentColor }}
+              className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
+            >
+              <BsCurrencyDollar />
+            </button>
           </div>
+
           <div className="mt-6">
-            <Button color="white" bgColor="blue" text="Download" borderRadius="10px" size="md" />
+            <Button color="white" bgColor={currentColor} text="Download" borderRadius="10px" size="md" />
           </div>
         </div>
+
         <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
           {earningData.map((item) => (
             <div
               key={item.title}
-              className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl"
+              className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl"
             >
               <button
                 type="button"
@@ -44,7 +80,6 @@ const Ecommerce = () => {
 
       <div className="flex gap-10 flex-wrap justify-center ">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780 ">
-          <div />
           <div className="flex justify-between">
             <p className="font-semibold text-xl"> Revenue Update</p>
             <div className="flex items-center gap-4">
@@ -62,7 +97,7 @@ const Ecommerce = () => {
               </p>
             </div>
           </div>
-          <div className="mt-10 flex gap-10 flex-wrap justify-center ">
+          <div className="mt-10 flex gap-10 flex-wrap justify-center">
             <div className="border-r-1 border-color m-4 pr-10">
               <div>
                 <p>
@@ -82,21 +117,21 @@ const Ecommerce = () => {
 
               <div className="mt-5 ">
                 <SparkLine
-                  currentColor="blue"
+                  currentColor={currentColor}
                   id="line-sparkLine"
                   type="Line"
                   height="80px"
                   weight="250px"
                   data={SparklineAreaData}
-                  color="blue"
+                  color={currentColor}
                 />
               </div>
               <div className="mt-10">
-                <Button color="white" bgColor="blue" text="Download Report" borderRadius="10px" />
+                <Button color="white" bgColor={currentColor} text="Download Report" borderRadius="10px" />
               </div>
             </div>
             <div>
-              <Stacked width="320px" height="360px" />
+              <Stacked currentMode={currentMode} width="320px" height="360px" />
             </div>
           </div>
         </div>
