@@ -6,7 +6,7 @@ import { earningData, SparklineAreaData, EcomPieChartData } from "../data/dummy"
 
 const Ecommerce = () => {
   return (
-    <div className="mt-12">
+    <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
           <div className="flex justify-between items-center">
@@ -19,7 +19,7 @@ const Ecommerce = () => {
             <Button color="white" bgColor="blue" text="Download" borderRadius="10px" size="md" />
           </div>
         </div>
-        <div className="flex m-3 flex-wrap justify-center -items-center">
+        <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
           {earningData.map((item) => (
             <div
               key={item.title}
@@ -43,7 +43,7 @@ const Ecommerce = () => {
       </div>
 
       <div className="flex gap-10 flex-wrap justify-center ">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780 ">
           <div />
           <div className="flex justify-between">
             <p className="font-semibold text-xl"> Revenue Update</p>
@@ -62,7 +62,7 @@ const Ecommerce = () => {
               </p>
             </div>
           </div>
-          <div className="mt-10 gap-10 flex-wrap justify-center ">
+          <div className="mt-10 flex gap-10 flex-wrap justify-center ">
             <div className="border-r-1 border-color m-4 pr-10">
               <div>
                 <p>
@@ -91,8 +91,12 @@ const Ecommerce = () => {
                   color="blue"
                 />
               </div>
-
-              {/* Stop at 2:08 minutes */}
+              <div className="mt-10">
+                <Button color="white" bgColor="blue" text="Download Report" borderRadius="10px" />
+              </div>
+            </div>
+            <div>
+              <Stacked width="320px" height="360px" />
             </div>
           </div>
         </div>
