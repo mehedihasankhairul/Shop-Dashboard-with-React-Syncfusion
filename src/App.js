@@ -43,6 +43,8 @@ const App = () => {
             </div>
 
             <div>
+              <ThemeSettings />
+
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />} />
@@ -57,7 +59,7 @@ const App = () => {
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-Piker" element={<ColorPicker />} />
+                <Route path="/color-picker" element={<ColorPicker />} />
 
                 {/* Charts */}
                 <Route path="/line" element={<Line />} />
